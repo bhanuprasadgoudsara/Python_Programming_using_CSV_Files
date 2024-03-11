@@ -13,13 +13,15 @@ with open (r'persons.csv', 'w', newline = '') as csvfile:
   writer.writerow([2, 'Katey', 10, 'F'])
   writer.writerow([3, 'Kiran', 40, 'M'])
   writer.writerow([4, 'Sana', 19, 'F'])
-  
+
+print("Initially inserted records in 'persons.csv' : ")
 with open (r'persons.csv', 'r') as csvfile:
   reader = csv.reader(csvfile)
   for record in reader:
     print(record)
 
 # display/fetch/read data from 'persons.csv' - 1
+print("\nRecords with all the females from 'persons.csv' : ")
 with open (r'persons.csv', 'r') as csvfile:
   reader = csv.DictReader(csvfile)
   for record in reader:
@@ -27,10 +29,11 @@ with open (r'persons.csv', 'r') as csvfile:
       print(record['ID'],' ',record['NAME'])
 
 # display/fetch/read data from 'persons.csv' - 2
+print("\nRecords with all the minors (< 18) from 'persons.csv' : ")
 with open (r'persons.csv', 'r') as csvfile:
   reader = csv.DictReader(csvfile)
   for record in reader:
-    if record['AGE'] < 18:
+    if int(record['AGE']) < 18:
       print(record['ID'],' ',record['NAME'])
 
 # Insert data into into 'persons.csv' when order is different
@@ -42,6 +45,7 @@ with open (r'persons.csv', 'a', newline = '') as csvfile:
   writer.writerow({'ID':6, 'AGE':30, 'GENDER':'F', 'NAME':'Sara'})
   writer.writerow({'ID':7, 'AGE':25, 'GENDER':'M', 'NAME':'Sash'})
 
+print("\nFinally inserted records in 'persons.csv' : ")
 with open (r'persons.csv', 'r') as csvfile:
   reader = csv.reader(csvfile)
   for record in reader:
